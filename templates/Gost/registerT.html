@@ -1,0 +1,91 @@
+{% extends 'baza.html' %}
+
+{% block login %}
+
+{% endblock %}
+
+{% block sredina %}
+<body style="text-align: center">
+    <h1 style="color: skyblue"><i>REGISTRACIJA TRENER</i></h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <table style="text-align: left; margin: auto">
+                <tr>
+                    <td>
+                        Korisnicko ime:
+                    </td>
+                    <td>
+                        {{ form.username }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Sifra:
+                    </td>
+                    <td>
+                        {{ form.password1 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Potvrda Sifre:
+                    </td>
+                    <td>
+                        {{ form.password2 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Ime:
+                    </td>
+                    <td>
+                        {{ form.first_name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Prezime:
+                    </td>
+                    <td>
+                        {{ form.last_name }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Email:
+                    </td>
+                    <td>
+                        {{ form.email }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Slika:
+                    </td>
+                    <td>
+                        {{ form.slika }}
+                    </td>
+                </tr>
+
+                <tr>
+                   <td colspan="2" style="text-align: center">
+                       <input type="submit" value="Register">
+                   </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        {{errors}}
+                    </td>
+                </tr>
+            </table>
+    </form>
+</body>
+{% endblock %}
+
+{% block razneStvari %}
+{% endblock %}
+
+{% block slike %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{%extends 'baseLule.html'%}
+{% load static %}
+
+{%block body%}
+<link rel="stylesheet" href="{% static 'css/baseProfilLule_style.css' %}">
+<div class="container">
+    <div class = "row">
+        <div class = "col-md-6 col-12">
+            {%block info%}
+            Basic info
+            {%endblock info%}
+        </div>
+        <div class = "col-md-3 col-12"></div>
+        <div class = "col-md-3 col-12">
+            {% block slika %}
+            {% endblock slika %}
+        </div>
+
+    </div>
+
+    {% block body_rest %}
+    {% endblock body_rest %}
+</div>
+
+{% endblock body%}

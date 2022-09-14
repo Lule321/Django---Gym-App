@@ -1,0 +1,20 @@
+{%extends 'baseProfilLule.html'%}
+{%load static%}
+
+{% block title %}Pregled vezba{% endblock title %}
+{% block info %}
+
+
+    <p>Naziv: {{vezba.naziv}}</p>
+    <p>Opis: {{vezba.opis}}</p>
+    <p>Tip: {{vezba.tip}} </p>
+    <p>Misici: {{vezba.misici}}</p>
+{%endblock info%}
+
+{% block slika %}
+    <img src="{% if vezba.slika %}
+    {{vezba.slika.url}}
+    {% else %}
+    ../../../media/imgs/vezbe/vezbaBezSlike.png
+    {% endif %}" alt="Nema slike">
+{% endblock slika %}

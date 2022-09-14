@@ -1,0 +1,9 @@
+
+
+<div>
+    {%for x in labele%}
+    {% if x.link %}
+    &nbsp;<a href = "{{x.link}}">{{x.tekst}}</a>&nbsp;
+    {% endif %}
+    {% endfor %}
+</div>

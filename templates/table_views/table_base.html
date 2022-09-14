@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
+{%block title%}Table Base{%endblock title%}
+{% block header %}
+{% include "table_views/header_base.html" with labele=lista_labele%}
+{% endblock header %}
+
+{% block body %}
+    {% block form %} {% endblock %}
+<div class = "div-table">
+    <table class = "table-content">
+
+        <tr>
+            {% for col in header_row  %}
+            <th>
+                {% if col.link %}
+                    <a href = "{{col.link}}">{{col.tekst}}</a>
+                {%else%}
+                    {{col.tekst}}
+                {% endif %}
+            </th>
+            {% endfor %}
+        </tr>
+
+        {% for row in rows  %}
+        <tr>
+            {%for col in row%}
+                <td>
+                    {% if col.link %}
+                        <a href = "{{col.link}}">{{col.tekst}}</a>
+                    {%else%}
+                        {{col.tekst}}
+                    {% endif %}
+                    
+                </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock body %}
+
+{% block footer %}
+{% include "table_views/footer_base.html" %}
+{% endblock footer %}
+

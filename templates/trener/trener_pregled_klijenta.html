@@ -1,0 +1,155 @@
+{% extends 'baseProfilLule.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style_pregled_treninga.css' %}">
+{% endblock css %}
+{% block javascript %}
+<script src= {% static 'javascript/trener_pregled_klijenta.js' %}></script>
+{% endblock javascript %}
+{% block title %}Pregled klijenta{% endblock title %}
+
+
+
+{% block info %}
+    <p>Username: {{klijent.username}}</p>
+    <p>First name:{{klijent.first_name}}</p>
+    <p>Last name: {{klijent.last_name}}</p>
+    <p>Email: {{klijent.email}}</p>
+{% endblock info %}
+{% block slika %}
+    <img src="{% if klijent.slika %}
+        {{klijent.slika.url}}
+        {% else %}
+        ../../../media/imgs/korisnici/profilnaBezSlike.png
+    {% endif %}" alt="Nema slike">
+{% endblock slika %}
+
+{% block body_rest  %}
+    {% if postoji_plan_treninga%}
+        <div class="row">
+            <div class= "col-12"><h2>Treninzi</h2></div>
+            <div class="div-table col-12">
+
+                <table class="table table-bordered">
+                    <tr class="table-header">
+                        <th>Ponedeljak</th>
+                        <th>Utorak</th>
+                        <th>Sreda</th>
+                        <th>Cetvrtak</th>
+                        <th>Petak</th>
+                        <th>Subota</th>
+                        <th>Nedelja</th>
+                    </tr>
+                    {% for red in treninzi_po_danima_inverz%}
+                        <tr class="bg-light">
+                            {% for trening in red  %}
+                                <td {%if trening != None%} id = "td-{{trening.trening.id}}" {% endif %}> 
+                                    {%if trening != None%}
+                                        Vreme: {{trening.trening.vreme}}
+                                        <ul>
+                                            {% for stavka in trening.stavke  %}
+                                                <li>{{stavka.brojPonavljanja}}-<a href={%url 'trener_pregled_vezbe' stavka.vezba.id%}>{{stavka.vezba.naziv}}</a>-{{stavka.tezina}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        <form class = "forma-dugme" action="{% url 'trener_izmeni_trening' trening.trening.id%}" method="get">
+                                            <input type="submit" value="Izmeni" name = "izmeni">
+                                        </form>
+                                        <form class = "forma-dugme" action="javascript:void(0)">
+                                            <input type="button" value="Izbrisi" class= "izbrisi" name = "izbrisi-{{trening.trening.id}}" id="izbrisi-{{trening.trening.id}}">
+                                        </form>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    <tr class="bg-light">
+                        {% for i in range  %}
+                            <td>
+                                <form action="{%url 'trener_dodaj_trening' i id_plan_treninga %}" method="get">
+                                    <input type="submit" value="Dodaj Trening" name = "dodaj_trening">
+                                </form>
+                            </td>   
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+    {%endif%}
+
+    {%if postoji_plan_ishrane%}
+        <div class="row">
+            <div class= "col-12"><h2>Plan ishrane</h2></div>
+            <div class="div-table col-12">
+
+                <table class="table">
+                    <tr class="table-header">
+                        <th>Ponedeljak</th>
+                        <th>Utorak</th>
+                        <th>Sreda</th>
+                        <th>Cetvrtak</th>
+                        <th>Petak</th>
+                        <th>Subota</th>
+                        <th>Nedelja</th>
+                    </tr>
+                    {% for red in lista_stavki_po_danima_inverz%}
+                        <tr class="bg-light">
+                            {% for stavka in red  %}
+                                <td {%if stavka != None%} id = "td-jelo-{{stavka.id}}" {% endif %}> 
+                                    {%if stavka != None%}
+                                        Vreme: {{stavka.vreme}}
+                                        <p>
+                                            {{stavka.kolicina}}g - <a href="{%url 'trener_pregled_jelo' stavka.jelo.id%}">{{stavka.jelo.naziv}}</a>
+                                        <p>
+                                        <form class = "forma-dugme" action="{%url 'trener_izmeni_obrok' stavka.id%}" method="get">
+                                            <input type="submit" value="Izmeni" name = "izmeni">
+                                        </form>
+                                        <form class = "forma-dugme" action="javascript:void(0)">
+                                            <input type="button" value="Izbrisi" class= "izbrisi-jelo" name = "izbrisi-jelo-{{stavka.id}}" id="izbrisi-jelo-{{stavka.id}}">
+                                        </form>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    <tr class="bg-light">
+                        {% for i in range  %}
+                            <td>
+                                <form action="{% url 'trener_dodaj_obrok' i id_plan_ishrane%}" method="post">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Dodaj obrok" name = "dodaj_jelo">
+                                </form>
+                            </td>   
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class ="col-12">
+            <h2>Chat</h2>
+        </div>
+        <div class ="col-12 div-chat bg-light"> 
+            {% for poruka in poruke  %}
+                {% if poruka.razgovor == razgovor %}
+                    <div class="div-poruka"><p class="poruka-moja">{{poruka.tekst}}</p></div>
+                {% else %}
+                    <div class="div-poruka"><p class="poruka-tudja">{{poruka.tekst}}</p></div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+        <div class = "col-12 div-send">
+            <div class = "text-to-send">
+                <form action="javascript:void(0)">
+                {% csrf_token %}
+                <input type="button" id="button-osvezi-chat" value = "Osvezi chat">
+                <input type="button" id="button-posalji-poruku" value="Posalji poruku">
+                </form>
+                <div contenteditable id="div-nova-poruka" class="bg-light"></div>
+
+            </div> 
+        </div>
+    </div>
+{% endblock body_rest %}

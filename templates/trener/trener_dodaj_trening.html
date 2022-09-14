@@ -1,0 +1,20 @@
+{% extends 'baseLule.html' %}
+{% block title %}Dodaj trening{% endblock title %}
+
+{% block body %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="tip">Tip</label>
+        <input type="text" name="tip" required>
+    </p>
+    <p>
+        <label for="vreme">Vreme</label>
+        <input type="time" name="vreme" required>
+    </p>        
+    <p>
+        <input type="Submit" value="Dodaj trening">
+    </p>
+</form>
+{% endblock body %}

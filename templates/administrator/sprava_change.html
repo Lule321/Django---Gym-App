@@ -1,0 +1,33 @@
+{% extends "administrator/admin_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+    <div class="row header">
+        <div class="col-sm-4" >
+            <div><b>Administrator</b> </div>
+        </div>
+        <div class="col-sm-4">
+            <form method="POST" style="text-align: center" action="{% url "admin_sprava_delete" %}"> {% csrf_token %}
+                <button type="submit" value="{{ sprava.id }}" name="sprava_id" style="background-color: #e35f5f">Obrisi</button>
+            </form>
+        </div>
+        <div class="col-sm-4" style="text-align: end">
+            <a class="header" href="{% url "admin_inventory_view" %}">Back</a>&nbsp
+            |&nbsp<a class="header" id="logout" href="{% url "logout_req" %}">Logout</a> <br>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+
+
+
+    <h1 style="text-align: center">{{ sprava.naziv }}</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy}}
+        <button type="submit">Sačuvaj</button>
+    </form>
+{% endblock %}

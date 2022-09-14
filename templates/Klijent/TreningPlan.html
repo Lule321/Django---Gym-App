@@ -1,0 +1,42 @@
+{% extends 'Klijent/KlijentBaza.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'CSS/klijent2.css' %}">
+{% endblock css %}
+{% block naslov %}Klijent - Trening Plan{% endblock %}
+
+{% block sadrzaj %}
+        <h1 class="Naslov1">
+            Trening Plan
+        </h1>
+        <div class = "TPlan">
+                <table class = "Tplan-tabela">
+                    {%for danTV, dan in treninzi_vezbe%}
+                    <tr class = "Tplan-row">
+                        <td class = "Tplan-td-dan"><div class = "Tplan-dan"><div class = "dan-text">{{dan}}</div></div></td>
+                    {% for  trening, vezbe in danTV %}
+                        {% if trening%}
+                        <td class = "Tplan-td" id = "{{trening.id}}">
+                            <div class = "Tplan-kartica" id = "T{{trening.id}}" >
+                                    <div class="Tplan-trening">{{trening.tip}}</div>
+                                    <div class="Tplan-vreme">{{trening.vreme}}</div>
+                                </div>
+                                <div class = "Tplan-lista" id = "V{{trening.id}}">
+                                    <ul class = "Tplan-vezbe">
+                                        {% for stavka in vezbe %}
+                                            <li class = "Tplan-vezba">{{stavka.vezba.naziv}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                        </td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </table>
+        </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+<div class="col-md-2 col-3">
+    {{request.user.username}}
+</div>
+
+<div class= "col-md-6 col-1">
+</div>
+
+<div class = "col-md-4 col-8">
+{%for x in labele%}
+{% if x.link %}
+&nbsp;<a href = "{{x.link}}">{{x.tekst}}</a>&nbsp;
+{% endif %}
+{% endfor %}
+</div>

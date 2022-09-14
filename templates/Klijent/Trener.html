@@ -1,0 +1,12 @@
+{% extends 'Klijent/KlijentBaza.html' %}
+
+{% block naslov %}Klijent - Trener{% endblock %}
+
+{% block sadrzaj %}
+        <h1>
+            Trener
+        </h1>
+        <div class = "Trener">
+            {{trener.first_name}} &nbsp; {{trener.last_name}}
+        </div>
+{% endblock %}

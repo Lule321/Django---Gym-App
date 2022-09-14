@@ -1,0 +1,44 @@
+{% extends 'baza.html' %}
+
+{% block login %}
+{% endblock %}
+
+{% block razneStvari %}
+{% endblock %}
+
+{% block sredina %}
+    <div style="margin: auto; text-align: center">
+         <table style="text-align: left; margin: auto">
+            {% for trener in treneri %}
+                <tr>
+                    <td>
+                        <span class="material-symbols-outlined">
+                            fitness_center
+                        </span>
+                        <b>{{ trener.first_name }} {{ trener.last_name }}</b>
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h5>OPIS TRENERA KOJI ZELE DA VIDE GOSTI</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right">
+                        <span class="material-symbols-outlined" style="color: black">
+                            mail
+                        </span>
+                        {{ trener.email }}
+                        <hr>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+
+{% block slike %}
+{% endblock %}

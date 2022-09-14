@@ -1,0 +1,39 @@
+{% extends "administrator/admin_base.html" %}
+
+
+{% block header %}
+    <div class="row header">
+        <div class="col-sm-6" >
+            <div><b>Administrator</b> </div>
+        </div>
+        <div class="col-sm-6" style="text-align: end">
+            |&nbsp<a class="header" id="logout" href="{% url "logout_req" %}">Logout</a> <br>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block body %}
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <button class="dugme" onclick="window.location = '{% url "admin_inventory_view" %}'">Inventory</button>
+                </td>
+                <td>
+                    <button class="dugme" onclick="window.location = '{% url "admin_meals_view" %}'">Meals</button>
+                </td>
+            </tr>
+            <tr>
+                 <td>
+                    <button class="dugme" onclick="window.location = '{% url "admin_clients_view" %}'">Clients</button>
+                </td>
+                <td>
+                    <button class="dugme" onclick="window.location = '{% url "admin_trainers_view" %}'">Trainers</button>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+{% endblock %}

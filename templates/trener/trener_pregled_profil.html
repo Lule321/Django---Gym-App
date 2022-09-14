@@ -1,0 +1,18 @@
+{% extends 'baseProfilLule.html' %}
+
+{% block title %}Pregled profila{% endblock title %}
+
+{% block info %}
+    <p>Username: {{trener.username}}</p>
+    <p>First name:{{trener.first_name}}</p>
+    <p>Last name: {{trener.last_name}}</p>
+    <p>Email: {{trener.email}}</p>
+{% endblock info %}
+
+{%block slika%}
+            <img src="{% if trener.slika %}
+                {{trener.slika.url}}
+                {% else %}
+                ../../../media/imgs/korisnici/profilnaBezSlike.png
+            {% endif %}" alt="Nema slike">
+{% endblock slika %}

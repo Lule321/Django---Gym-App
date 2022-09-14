@@ -1,0 +1,83 @@
+.div-table{
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+}
+
+table{
+    width:100%;
+
+}
+table,td, tr, th{
+    border: 1px solid black;
+    border-collapse: collapse;
+
+   
+}
+td, th{
+    padding: 5px;
+}
+
+.forma-dugme{
+    display: inline;
+}
+
+.div-chat{
+    font-size:12px;
+    display: flex;
+    flex-direction: column-reverse;
+    border: 2px solid black;
+    border-radius: 5px;
+    overflow-y: scroll;
+    height: 400px;
+}
+
+.div-poruka{
+    white-space: pre;
+}
+
+.poruka-tudja, .poruka-moja{
+
+    width: 33%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.poruka-tudja{
+    background-color: rgb(213, 131, 248);
+}
+.poruka-moja{
+    margin-right: 0;
+    margin-left: auto;
+    background-color: skyblue;
+}
+
+#div-nova-poruka{
+    display: inline-block;
+    width: 33%;
+    border:1px solid black;
+    margin: 10px;
+    overflow-wrap: break-word;
+    white-space:pre;
+}
+
+.text-to-send{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+}
+
+#button-posalji-poruku{
+    margin:10px;
+}
+
+#button-osvezi-chat{
+    margin: 10px;
+}
+
+tr.table-header{
+    background-color: skyblue;
+}

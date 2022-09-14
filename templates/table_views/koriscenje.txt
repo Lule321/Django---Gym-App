@@ -1,0 +1,8 @@
+Sta god hocete od linkova da stoji u header-u stavljajte u niz lista_labele (pa ga posaljite na obradu)
+Sta god hocete da stoji u headeru tabele stavite u niz header_row (pa ga posaljite na obradu)
+Sta god hocete da stoji kao polja u tabeli, stavite u niz neki i onda sve te nizove stavite u rows. Otp, rows je niz redova,
+a svaki taj red sadrzi odredjen broj kolona.
+
+
+Ono sto za sad moze da se stavlja su LinkPolje i TekstualnoPolje (dve klase koje sam kreirao), LinkPolje je izvedeno iz TekstualnogPolja
+S tim sto LinkPolje ima jos jedno polje u sebi zvano link. To je otp to.

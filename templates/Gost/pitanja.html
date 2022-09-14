@@ -1,0 +1,88 @@
+{% extends 'baza.html' %}
+
+{% block login %}
+{% endblock %}
+
+{% block razneStvari %}
+{% endblock %}
+
+{% block gornjiDeo %}
+    <script>
+    function poruka(){
+        alert("Morate odgovoriti na pitanja");
+    }
+    </script>
+    <div class="row">
+        <div class="col-sm-6" style="background-color: skyblue; text-align: left">
+            <div><b>Radno vreme 8:00-23:00/ Vikendom 10:00-20:00</b> </div>
+        </div>
+        <div class="col-sm-6" style="background-color: skyblue; text-align: right">
+            <a><img src="../media/imgs/ing.png" style="width: 30px; height: 30px;" onclick="poruka()"></a>
+            <a><img src="../media/imgs/tw.png" style="width: 30px; height: 30px;" onclick="poruka()"></a>
+            <a><img src="../media/imgs/fb.png" style="width: 30px; height: 30px;" onclick="poruka()"></a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block mapa %}
+<table>
+    <tr>
+        <td>
+            <div class="dropdown">
+                <a data-bs-toggle="dropdown" style="color: skyblue;"><i>O nama</i></a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" onclick="poruka()">Treneri</a></li>
+                    <li><a class="dropdown-item" onclick="poruka()">Osnovne informacije</a></li>
+                </ul>
+            </div>
+        </td>
+        <td style="color: black;">
+            /
+        </td>
+        <td>
+            <a style="color: skyblue;" onclick="poruka()"> <i>Pregled treninga</i></a>
+        </td>
+        <td>
+            <a><h1 style="color: skyblue;" onclick="poruka()">&ensp;BETTER LIFE</h1></a>
+        </td>
+        <td>
+            <a style="color: skyblue;" onclick="poruka()"> <i>&ensp;&ensp;&ensp;Usluge</i></a>
+        </td>
+        <td style="color: black;">
+            /
+        </td>
+        <td>
+            <div class="dropdown">
+                <a data-bs-toggle="dropdown" style="color: skyblue;"><i>Registruj se</i></a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" onclick="poruka()">Registruj se kao trener</a></li>
+                    <li><a class="dropdown-item" onclick="poruka()">Registruj se kao klijent</a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+</table>
+{% endblock %}
+
+
+{% block slike %}
+{% endblock %}
+
+{% block sredina %}
+    <form method="POST">
+         <ul>
+            {% for pitanje in pitanja %}
+                <li>
+                    <b>{{ pitanje.id }}.{{ pitanje.tekst }}</b>
+                    <br>
+                    <input type="text" id="{{ pitanje.id }}">
+                </li>
+            {% endfor %}
+        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="submit">
+    </form>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

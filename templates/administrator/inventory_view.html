@@ -1,0 +1,28 @@
+{% extends "table_views/images_table_base.html" %}
+{% block title %}
+Inventory view
+{% endblock %}
+
+{% block header %}
+    <div class="row">
+        <div class="col-sm-6" style="background-color: skyblue; text-align: left">
+            <div><b>Administrator</b> </div>
+        </div>
+        <div class="col-sm-6" style="background-color: skyblue; text-align: right">
+            <a class="header" href="{% url "admin_index" %}">Main</a>&nbsp
+            |&nbsp<a class="header" id="logout" href="{% url "logout_req" %}">Logout</a> <br>
+        </div>
+    </div>
+{% endblock %}
+
+{{% block form %}
+    <div class="extra-header">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <button class="btn" type="submit">Pronadji</button>
+        </form>
+        &nbsp&nbsp&nbsp
+        <button class="btn" onclick="window.location = '{% url "admin_inventory_add" %}'">Dodaj</button>
+    </div>
+{% endblock %}

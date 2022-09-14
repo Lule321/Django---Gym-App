@@ -1,0 +1,47 @@
+{% extends 'baseLule.html' %}
+{% load static %}
+{% block title %}Izmena obroka{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style_izmeni_obrok.css' %}">
+{% endblock css %}
+
+{% block javascript %}
+<script src={%static 'javascript/trener_izmeni_obrok.js'%}> </script>
+{% endblock javascript%}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="">Vreme: </label><input type="time" name="vreme" id="vreme" value="{{vreme}}">
+                <label for="">Kolicina: </label><input type="number" name="kolicina" id="kolicina" value={{stavka_ishrane.kolicina}}>
+                <label for="">Naziv: </label><input type="text" name="naziv" id="naziv" value="{{stavka_ishrane.jelo.naziv}}" readonly>
+                <input type="hidden" value="{{stavka_ishrane.jelo.id}}" id="id-stavka" name="id-stavka">
+                <input type="submit" class ="btn btn-primary" value="Sacuvaj promene">
+            </form>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class = "col-md-6 col-12">
+        <form action="javascript:void(0)">
+            {%csrf_token%}
+            <label for="">Pretraga: </label><input type="text" name="" id="tekst-pretraga">
+            <input type="button" class ="btn btn-primary" value="Pretrazi" id="button-pretraga">
+        </form>
+    </div>
+
+    <div class="row" id="div-rezultat">
+    </div>
+</div>
+
+
+
+{% endblock body %}
+

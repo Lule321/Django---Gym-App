@@ -1,0 +1,31 @@
+{% extends "administrator/admin_base.html" %}
+{% load static %}
+{% block header %}
+    <div class="row header">
+        <div class="col-sm-6" >
+            <div><b>Administrator</b> </div>
+        </div>
+        <div class="col-sm-6" style="text-align: end">
+            <a class="header" href="{% url "admin_inventory_view" %}">Back</a>&nbsp
+            |&nbsp<a class="header" id="logout" href="{% url "logout_req" %}">Logout</a> <br>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+{% block body %}
+    <h1 class="naslov" style="text-align: center">{{ jelo.naziv }}</h1>
+    <div class="opis-outer">
+        <div class="opis">
+        <p><i>{{ jelo.priprema }}</i></p><hr>
+        <b>Kalorije na 100g:</b> &nbsp; {{ jelo.kalorije }}kcal
+        <br>
+        <b>Sastojci:</b> &nbsp; {{ jelo.sastojci }}
+        <br>
+        </div>
+        <button class="izmeni" onclick="window.location = '{% url "admin_jelo_change" jelo_id=jelo.id %}'">Izmeni</button>
+    </div>
+{% endblock %}

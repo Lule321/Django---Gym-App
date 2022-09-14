@@ -1,0 +1,58 @@
+{% extends 'baseLule.html' %}
+{% load static %}
+
+{% block title %}Izmena treninga{% endblock title %}
+{% block javascript %}
+    <script src="{% static 'javascript/trener_izmeni_trening.js' %}"></script>
+{% endblock javascript %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div id="div-stavke">
+        <form action="" id="form-sacuvaj-izmene" method="post" onsubmit="return validateForm();">
+            {% csrf_token %}
+            <div class="col-12">
+                    <p>Izmena vezbe se vrsi tako sto se vezba pretrazi i klikne se na zeljenu vezbu.</p>
+                    <label for="vreme">Vreme treninga:&nbsp;</label><input type="time" value="{{vreme}}" name="vreme" id="vreme" readonly required> &nbsp;
+                    <input type="hidden" value="false" name="vremePromena" id="vremePromena">
+                    <button class="btn btn-primary" id="izmeni-vreme" type="button">Izmeni</button>
+                
+            </div>
+            {% for stavka in stavke %}
+                <div class="col-12" id="col-{{stavka.redniBroj}}">
+                    <label for="redniBroj-{{stavka.redniBroj}}">Redni broj:&nbsp;</label><input type="number" class="redniBrojevi bitna-polja" value="{{stavka.redniBroj}}" id="redniBroj-{{stavka.redniBroj}}" name="redniBroj-{{stavka.redniBroj}}" size="8" readonly> 
+                    <label for="brojPonavljanja-{{stavka.redniBroj}}">Broj ponavljanja:&nbsp;</label><input type="text" value="{{stavka.brojPonavljanja}}" id="brojPonavljanja-{{stavka.redniBroj}}" name="brojPonavljanja-{{stavka.redniBroj}}" size="10" readonly>
+                    <label for="vezba-{{stavka.redniBroj}}">Vezba:&nbsp;</label><input type="text" value="{{stavka.vezba.naziv}}" id="vezba-{{stavka.redniBroj}}" name="vezba-{{stavka.redniBroj}}" size="18" readonly> 
+                    <label for="tezina-{{stavka.redniBroj}}">Tezina:&nbsp;</label><input type="text" value="{{stavka.tezina}}" id="tezina-{{stavka.redniBroj}}" name="tezina-{{stavka.redniBroj}}" size="18" readonly>
+                    <input type="hidden" value="false" id="promena-{{stavka.redniBroj}}" name="promena-{{stavka.redniBroj}}">
+                    <input type="hidden" value="{{stavka.vezba.id}}" class= "stavka-vezbeId" id="stavka-vezbaId-{{stavka.redniBroj}}" name="stavka-vezbaId-{{stavka.redniBroj}}">
+                    <button class="btn btn-primary izmeni-stavku" type="button" id="izmeni-stavku-{{stavka.redniBroj}}">Izmeni</button>
+                    <button class="btn btn-primary izbrisi-stavku" id="izbrisi-stavku-{{stavka.redniBroj}}" type="button">Izbrisi</button>
+                </div>
+            
+            {% endfor %}
+            </div>
+            <p><button class="btn btn-primary" type="button" id="dodaj-stavku">Dodaj stavku treninga</button></p>
+            <input type="hidden" value="{{broj_stavki}}" name="brojStavki" id="brojStavki">
+            <p><input type="submit" value="Sacuvaj izmene" class="btn btn-primary" id="submit"></p>
+
+        </form>
+    </div>
+
+
+
+
+    <div class = "row">
+        <div class = "col-12">
+            <form id="forma-pretraga" action="javascript:void(0)" >
+                {% csrf_token %}
+                <label for="input-vezbe">Pretraga vezbi:&nbsp;</label>
+                <input type="text" id="input-vezbe" name="input-vezbe" value=""> &nbsp;
+                <input type="submit" id="pretraga-vezbi" class="btn btn-primary" value="Pretrazi">
+            </form>
+        </div>
+    </div>
+    <div class ="row" id="pretrazene-vezbe-div">
+    </div>
+</div>
+{% endblock body %}

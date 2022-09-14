@@ -1,0 +1,14 @@
+{% extends 'table_views/images_table_baseLule.html' %}
+
+{% block title %}Pregled jela{% endblock title %}
+
+{% block naslov %}Pregled jela{% endblock naslov %}
+
+{% block form %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{forma_pretraga_jela}}
+    <input type="submit" value="Pretraga">
+</form>
+<br>
+{% endblock form %}

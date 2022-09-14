@@ -1,0 +1,48 @@
+/*<!--Author: Časlav Petronić-->*/
+
+body{
+    background-image: url(Pozadina1.jpg);
+    background-size: cover;
+}
+
+.navigacija{
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+.bg-bl{
+    background-color: skyblue;
+}
+.text-bl{
+    color: skyblue;
+    text-decoration-line: none;
+}
+.Klijent{
+    align-self: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+#PadajuciMeni{
+    background-color: skyblue;
+}
+
+.nav-item:hover {
+    background-color: aliceblue;
+    border-radius: 3px;
+}
+
+.tabela{
+        box-shadow: -30px 30px 20px rgb(0, 0, 0, 0.3);
+        width: 50%; margin: auto; text-align: center
+    }
+
+#Sadrzaj{
+    padding: 40px;
+    display: flex;
+
+}
+
+#toggleMobileMenu{
+   justify-content: right;
+}

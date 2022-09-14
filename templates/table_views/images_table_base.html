@@ -1,0 +1,39 @@
+{% extends 'administrator/admin_base.html' %}
+{% load static %}
+
+{% block javascript %}
+     <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../../static/js/image-table.js"></script>
+{% endblock javascript %}
+
+{%block title%}Image Table Base{%endblock title%}
+{% block header %}
+{% include "table_views/header_base.html" with labele=lista_labele%}
+{% endblock header %}
+
+{% block body %}
+    {% block form %}
+        <form>
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Pronadji">
+        </form>
+    {% endblock %}
+<div class = "div-table">
+    <table class = "table-content">
+        {% for row in rows  %}
+        <tr class="image-table-row">
+            {%for elem in row%}
+                <td >
+                    <a href={{ elem.link }}> <img src="{{ elem.slika }}" class="slika" width = "250px" height="250px" alt={{ elem.tekst }}></a>
+                </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock body %}
+
+

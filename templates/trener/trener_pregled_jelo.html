@@ -1,0 +1,22 @@
+{%extends 'baseProfilLule.html'%}
+{%load static%}
+
+{% block title %}Pregled jelo{% endblock title %}
+
+{% block info %}
+    <p>Naziv: {{jelo.naziv}}</p>
+    <p>Kalorije: {{jelo.kalorije}}</p>
+    <p>Priprema: {{jelo.priprema}} </p>
+    <p>Sastojci: {{jelo.sastojci}}</p>
+    <br>
+{% endblock info %}
+
+{% block slika %}
+    <img src="{% if jelo.slika %}
+    {{jelo.slika.url}}
+    {% else %}
+    ../../../media/imgs/jela/jeloBezSlike.jpg
+    {% endif %}" alt="Nema slike">
+{% endblock slika %}
+
+

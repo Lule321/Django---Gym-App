@@ -1,0 +1,16 @@
+{% extends 'table_views/images_table_baseLule.html' %}
+
+{% block title %}Pregled klijenata{% endblock title %}
+
+{% block naslov %}Pregled klijenata{% endblock naslov %}
+
+    {% block form %}
+        
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            {{forma_pretraga_klijenta}}
+            <input type="submit" value="Pretraga">
+        </form>
+        <br>
+    {% endblock form %}

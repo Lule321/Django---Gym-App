@@ -1,0 +1,61 @@
+.Tplan-lista{
+    display: none;
+    background-color: aliceblue;
+    padding: 15px;
+     width: 90%;
+    height: 90%;
+}
+.Tplan-dan{
+     display: flex;
+    justify-content: center;
+    background-color: #346e80;
+    border-radius: 5px;
+    padding: 5px ;
+    width: 95%;
+    height: 90%;
+    margin: 5px;
+    border-radius: 5px;
+}
+.dan-text{
+    align-self: center;
+     color: aliceblue;
+    text-align: center;
+}
+.Tplan-td-dan{
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+}
+.Tplan-kartica{
+
+    background-color: skyblue;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    color: #103642;
+    width: 90%;
+    height: 90%;
+}
+.Naslov1{
+    color: #022333;
+}
+
+.Tplan-tabela{
+}
+.Tplan-vreme{
+    padding: 0 4px;
+    margin-left: 4px;
+    border-left: #346e80 solid 1px;
+    align-self: center;
+}
+.Tplan-trening{
+    padding: 0 5px;
+    align-self: center;
+}
+.Tplan-td{
+    padding: 5px;
+    width: 200px;
+    height: 100px;
+}

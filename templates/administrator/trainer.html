@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../../static/js/admin_trainer.js"></script>
+        <title>Document</title>
+        <link href="../../static/css/admin.css" rel="stylesheet" type="text/css">
+        <style>
+            #a1{
+                color: skyblue;
+            }
+            a {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        {% block bar %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4" style="background-color: skyblue; text-align: left">
+                    <div><b>IME KLIJENTA</b> </div>
+                </div>
+                <div class="col-sm-4" onsubmit="return verifikuj()" id="ukl_ver" style="background-color: skyblue">
+                    <form method="POST" action="{% url "admin_trainer_verify" %}">
+                        {% csrf_token %}
+                        <button id="verifikuj" type="submit" value="{{ trener.id }}" name="trener_id" style="background-color: #e35f5f">Verifikuj</button>
+                    </form>
+                    <form method="POST" onsubmit="return ukloni()" action="{% url "admin_trainer_remove" %}">
+                        {% csrf_token %}
+                        <button type="submit" id="ukloni" value="{{ trener.id }}" name="trener_id" style="background-color: #e35f5f">Ukloni</button>
+                    </form>
+                </div>
+                <div class="col-sm-4 header-links" style="background-color: skyblue">
+                    <a class="header" href="{% url "admin_trainers_view" %}">Back</a>&nbsp
+                    |&nbsp<a class="header" id="logout" href="{% url "logout_req" %}">Logout</a> <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3" style="text-align: center;">
+
+                </div>
+                <div class="col-sm-6" style="text-align: center;">
+                    <table>
+                        <tr>
+                            <td>
+                                <a href="#" style="color: skyblue;"><i>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Trener</i></a>
+                            </td>
+                            <td style="color: black;">
+                                /
+                            </td>
+                            <td>
+                                <a href="{% url 'treninziPK' %}" style="color: skyblue;"> <i>Pregled treninga</i></a>
+                            </td>
+                            <td>
+                                <a href="{% url 'pocetna' %}"><h1 style="color: skyblue;">&ensp;BETTER LIFE</h1></a>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <a data-bs-toggle="dropdown" style="color: skyblue;"><i>&ensp;&ensp; Profil</i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Izmena plana</a></li>
+                                        <li>
+                                            {% if user.is_authenticated %}
+                                                <a class="dropdown-item" href="{% url 'logout_req' %}">Logout</a>
+                                            {% endif %}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td style="color: black;">
+                                /
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <a data-bs-toggle="dropdown" style="color: skyblue;"><i>Planovi</i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Plan treninga</a></li>
+                                        <li><a class="dropdown-item" href="#">Plan ishrane</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            {% endblock %}
+            {% block info %}
+            <div class="row">
+                <div class="col-sm-3" style="text-align: center;">
+                    <h2 style="color: skyblue;"><i>Osnovne informacije</i></h2>
+                    <table style="text-align: left; margin: auto;" class="table table-bordered">
+                        <tr>
+                            <td id="a1">
+                                <b>Ime:</b>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="a1">
+                                <b>Prezime:</b>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="a1">
+                                <b>Korisnicko ime:</b>
+                            </td>
+                            <td>
+                                {{ trener.username }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="a1">
+                                <b>Visina:</b>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="a1">
+                                <b>Tezina:</b>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+                <div class="col-sm-3">
+                    <img src="../../../media/imgs/Logo.jpg" alt="Logo" style="height: 285px; width: 290px;">
+                </div>
+            </div>
+            {% endblock %}
+            {% block zelje %}
+            <div class="row">
+                <div class="col-sm-12" style="text-align: center">
+                    <h1 style="color: skyblue;"><b><i>Zelje i restrikcije</i></b></h1>
+                    <table style="margin: auto; text-align: left">
+                        <tr>
+                            <td>
+                                Povrede:
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Pocetna kilaza:
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Zeljena kilaza:
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Namirnice koje ne volim:
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+        {%block footer%}
+        <footer>
+            <b>Better life</b>&reg;
+        </footer>
+        {% endblock %}
+    </body>
+</html>
